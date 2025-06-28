@@ -1,0 +1,14 @@
+.square {
+  border: 1px solid black;
+  color: darkslategray;
+  margin-left: 3PX;
+  margin-top: 3PX;
+  height: 34PX;
+  line-height: 34PX; 
+  text-align: center;
+  display: inline-block;
+  font-size: 24px;
+  /* float: left; */
+}
+
+

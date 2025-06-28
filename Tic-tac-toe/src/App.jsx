@@ -7,20 +7,17 @@ function Square({value, onSquareClick}){
 }
 
 function Board({xIsNext , squares, onplay}){ 
-  // console.log(squares)
   function handleClick(i){
     if (calculateWinner(squares) || squares[i]){
       return;
     }
 
     const nextSquares = squares.slice();
-    // console.log("nextSquares Before", nextSquares)
     if (xIsNext) {
       nextSquares[i] = "X";
     } else {
       nextSquares[i] = "O";
     }
-    // console.log("nextSquares After",nextSquares)
     onplay(nextSquares)
   }
   
@@ -56,47 +53,20 @@ function Board({xIsNext , squares, onplay}){
 }
 
 function Game() {
-  const [xIsNext, setXIsNext] = useState(true);
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const xIsNext = currentMove % 2 ===0;
   const currentSquares = history[currentMove];
 
-  // console.log(history)
-  // console.log("Before Current suqare",currentSquares)
   function handlePlay(nextSquares){ 
-    // console.log("History before nextHistory",history)
-    // console.log("before Current move",currentMove)
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
-    // console.log("nexthistory", nextHistory)
     setHistory(nextHistory)
     setCurrentMove(nextHistory.length - 1)
-    setXIsNext(!xIsNext)
-    // console.log(xIsNext)
   }
-  // console.log(xIsNext)
-  // console.log("after update current move", currentMove)
-  // console.log("After Current suqare",currentSquares)
+
   function jumpToMove(nextMove) {
     setCurrentMove(nextMove);
-    setXIsNext(nextMove % 2 === 0);
   }
-  // console.log(currentMove)
-  
-  // const moves = history.map((squares, move) => {
-  //   console.log(squares)
-  //   console.log(move)
-  //   let description;
-  //   if (move > 0) {
-  //     description = 'Go to move #' + move;
-  //   } else {
-  //     description = 'Go to game start';
-  //   }
-
-  //   return description
-  // })
-  // console.log(moves)
-
-
 
   const moves = history.map((squares, move) => {
     let description;
@@ -105,15 +75,12 @@ function Game() {
     } else {
       description = 'Go to game start';
     }
-    // console.log(squares)
-    // console.log(move)
     return (
       <li key={move}>
         <button onClick={() => jumpToMove(move)}>{description}</button>
       </li>
     ) 
   })
-  // console.log(moves)
 
   return (
     <div className="game">
@@ -152,8 +119,6 @@ function calculateWinner(squares){
 
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
     <>
       <Game />

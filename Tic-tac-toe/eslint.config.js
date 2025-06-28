@@ -13,6 +13,7 @@ export default defineConfig([
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
     ],
+    parser: "babel-eslint",
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

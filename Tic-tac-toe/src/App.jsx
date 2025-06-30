@@ -29,16 +29,6 @@ function Board({xIsNext , squares, onplay}){
     status = "Next Player: " + (xIsNext ? "X" : "O"); 
   }
 
-//   const squareBoxElement = () =>  {
-//     let myArray = []
-//     for (let i = 0; i < 3; i++) {
-//       for (let i = 0; i < 3; i++) {
-//         myArray.push(<Square value={squares[i]} onSquareClick={() => handleClick(i)} />) 
-//       }
-//     }
-//     return myArray
-// }
-
   return(
     <>
       <div className='status'>{status}</div>

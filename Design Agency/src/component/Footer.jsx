@@ -1,6 +1,6 @@
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer class="flex flex-row justify-between items-stretch font-Poppins">
+    <footer class="flex justify-between gap-x-4 absolute bottom-0">
       <div>
         <a href="#">
           <img src="/images/logos_google.png" alt="google logo" />
@@ -28,4 +28,6 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

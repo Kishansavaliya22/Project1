@@ -7,7 +7,16 @@ function Register() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onFormSubmit = (data) => console.log(data);
+  const onFormSubmit = (data) => {
+    const userData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    };
+
+    localStorage.setItem(data.email, JSON.stringify(userData));
+    console.log("You have successfully register!!");
+  };
   // const onErrors = (errors) => {};
 
   const registrationRequirement = {
